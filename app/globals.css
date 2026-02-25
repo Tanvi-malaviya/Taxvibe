@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
+/* ===============================
+   SMART PURPLE FINANCE THEME
+================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base */
+  --background: #F5F3FF;   /* Soft Lavender Background */
+  --foreground: #1F2937;   /* Dark readable text */
+
+  /* Brand Colors */
+  --color-primary: #4C1D95;   /* Deep Purple */
+  --color-secondary: #8B5CF6; /* Soft Purple */
+  --color-accent: #22C55E;    /* Finance Green */
+
+  /* UI */
+  --color-surface: #FFFFFF;
+  --color-border: #E9D5FF;   /* Light purple border */
+
+  /* Text */
+  --color-text-main: #1F2937;
+  --color-text-muted: #6B7280;
+
+  /* ===============================
+     FONT SYSTEM
+  ================================= */
+
+  --font-body: var(--font-primary);
+  --font-heading: var(--font-primary);
 }
 
+/* Tailwind theme mapping */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-heading);
 }
+
+/* ===============================
+   DARK MODE (Purple Corporate)
+================================ */
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0F0A1F;   /* Deep dark purple */
+    --foreground: #EDE9FE;
+
+    --color-surface: #1A1333;
+    --color-border: #312E81;
+
+    --color-primary: #8B5CF6;
+    --color-secondary: #C4B5FD;
+    --color-accent: #22C55E;
   }
 }
+
+/* ===============================
+   BODY TEXT
+================================ */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  letter-spacing: 0.2px;
+}
+
+/* ===============================
+   HEADINGS
+================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+}
+
+/* OPTIONAL — HERO BIG TEXT */
+
+.hero-title {
+  font-family: var(--font-heading);
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+}
+
+
+@keyframes shine {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+.animate-shine {
+  animation: shine 3s infinite;
+}
+
+
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.animate-sweep {
+  animation: sweep 1.8s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradientMove {
+  animation: gradientMove 8s ease infinite;
+}
+
+
+
+@keyframes borderMove {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-borderMove {
+  animation: borderMove 2s linear infinite;
 }
